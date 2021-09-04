@@ -23,17 +23,17 @@ public class CarManagerTest {
   @Test
   public void register_savesCar_toRepository() {
 
-    var myCar = new CarEntity(
-        "carId",
-        "Toyota",
-        "Auris",
-        2015,
-        87500,
-        "description",
-        10,
-        "Bartek Ciulkin",
-        false);
-
+    var myCar = CarEntity.builder()
+        .carId("carId")
+        .brand("Toyota")
+        .model("Auris")
+        .description("description")
+        .isElectric(false)
+        .trunkCapacity(10)
+        .milesTravelled(87500)
+        .driver("Bartek Ciulkin")
+        .year(2015)
+        .build();
 
     carManager.register(myCar);
 
