@@ -1,8 +1,7 @@
 package pl.bc.tdfTestingDemo;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-import pl.bc.tdfTestingDemo.model.CarEntity;
+import static pl.bc.tdfTestingDemo.CarEntityTestDataFactory.createCarWithYear;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -40,18 +39,4 @@ public class CarManagerTest {
     assertThat(carRepository.count()).isZero();
   }
 
-  private CarEntity createCarWithYear(int year) {
-
-    return CarEntity.builder()
-        .carId("otherCarId")
-        .brand("WW")
-        .model("Golf")
-        .description("description2")
-        .isElectric(false)
-        .trunkCapacity(15)
-        .milesTravelled(200500)
-        .driver("Jan Andrzej")
-        .year(year)
-        .build();
-  }
 }
