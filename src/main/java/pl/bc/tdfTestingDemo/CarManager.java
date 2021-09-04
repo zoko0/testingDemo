@@ -12,6 +12,9 @@ public class CarManager {
 
   public void register(CarEntity car) {
 
+    if (car.getYear() < 2011) {
+      return;
+    }
     carRepository.save(car);
   }
 }

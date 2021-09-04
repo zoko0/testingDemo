@@ -39,4 +39,24 @@ public class CarManagerTest {
 
     assertThat(carRepository.count()).isEqualTo(1L);
   }
+
+  @Test
+  public void register_shouldNotSaveCar_toRepository() {
+
+    var myCar = CarEntity.builder()
+        .carId("otherCarId")
+        .brand("WW")
+        .model("Golf")
+        .description("description2")
+        .isElectric(false)
+        .trunkCapacity(15)
+        .milesTravelled(200500)
+        .driver("Jan Andrzej")
+        .year(1998)
+        .build();
+
+    carManager.register(myCar);
+
+    assertThat(carRepository.count()).isZero();
+  }
 }
