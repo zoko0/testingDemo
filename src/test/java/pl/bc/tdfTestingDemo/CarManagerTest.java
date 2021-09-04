@@ -23,17 +23,7 @@ public class CarManagerTest {
   @Test
   public void register_savesCar_toRepository() {
 
-    var myCar = CarEntity.builder()
-        .carId("carId")
-        .brand("Toyota")
-        .model("Auris")
-        .description("description")
-        .isElectric(false)
-        .trunkCapacity(10)
-        .milesTravelled(87500)
-        .driver("Bartek Ciulkin")
-        .year(2015)
-        .build();
+    var myCar = createCarWithYear(2015);
 
     carManager.register(myCar);
 
@@ -43,7 +33,16 @@ public class CarManagerTest {
   @Test
   public void register_shouldNotSaveCar_toRepository() {
 
-    var myCar = CarEntity.builder()
+    var myCar = createCarWithYear(1998);
+
+    carManager.register(myCar);
+
+    assertThat(carRepository.count()).isZero();
+  }
+
+  private CarEntity createCarWithYear(int year) {
+
+    return CarEntity.builder()
         .carId("otherCarId")
         .brand("WW")
         .model("Golf")
@@ -52,11 +51,7 @@ public class CarManagerTest {
         .trunkCapacity(15)
         .milesTravelled(200500)
         .driver("Jan Andrzej")
-        .year(1998)
+        .year(year)
         .build();
-
-    carManager.register(myCar);
-
-    assertThat(carRepository.count()).isZero();
   }
 }
