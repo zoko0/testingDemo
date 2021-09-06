@@ -19,7 +19,7 @@ import lombok.Setter;
 public class CarEntity {
 
   @Id
-  private String carId;
+  private String Id;
 
   private String brand;
 

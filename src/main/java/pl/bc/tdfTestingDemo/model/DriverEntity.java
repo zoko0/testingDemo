@@ -14,7 +14,7 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class DriverEntity {
 
-  private String driverId;
+  private String Id;
 
   private String firstName;
 

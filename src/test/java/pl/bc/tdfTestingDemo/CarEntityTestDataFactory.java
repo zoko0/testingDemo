@@ -13,10 +13,10 @@ public class CarEntityTestDataFactory {
     return standardCarEntityBuilder().build();
   }
 
-  private static CarEntityBuilder standardCarEntityBuilder() {
+  public static CarEntityBuilder standardCarEntityBuilder() {
 
     return CarEntity.builder()
-        .carId("carId")
+        .Id("carId")
         .brand("WW")
         .model("Golf")
         .description("description2")

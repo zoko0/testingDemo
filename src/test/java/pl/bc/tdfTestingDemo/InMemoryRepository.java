@@ -77,6 +77,6 @@ public class InMemoryRepository<T, ID extends Serializable> implements CrudRepos
 
   @SneakyThrows
   private static Object getId(Object t) {
-    return MethodUtils.invokeMethod(t, "getCarId");
+    return MethodUtils.invokeMethod(t, "getId");
   }
 }
