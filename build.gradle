@@ -19,6 +19,7 @@ sourceCompatibility = 10
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
@@ -31,4 +32,7 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.rest-assured:rest-assured:3.0.0'
+    testImplementation(files("value-provider-core-1.0.0.jar"))
+    testImplementation(files("value-provider-junit4-1.0.0.jar"))
+    implementation("com.google.guava:guava:30.1.1-jre")
 }

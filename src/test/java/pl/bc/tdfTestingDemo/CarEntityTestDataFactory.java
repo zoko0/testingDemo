@@ -1,5 +1,7 @@
 package pl.bc.tdfTestingDemo;
 
+import static com.tngtech.valueprovider.ValueProviderFactory.createRandomValueProvider;
+
 import java.util.Calendar;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -16,16 +18,17 @@ public class CarEntityTestDataFactory {
 
   public static CarEntityBuilder standardCarEntityBuilder() {
 
+    var provider = createRandomValueProvider();
     return CarEntity.builder()
-        .Id("carId")
-        .brand("WW")
-        .model("Golf")
-        .description("description2")
-        .isElectric(false)
-        .trunkCapacity(15)
-        .milesTravelled(200500)
-        .driver("Jan Andrzej")
-        .year(2012);
+        .Id(provider.fixedDecoratedString("carId"))
+        .brand(provider.fixedDecoratedString("WW"))
+        .model(provider.fixedDecoratedString("Golf"))
+        .description(provider.fixedDecoratedString("description2"))
+        .isElectric(provider.booleanValue())
+        .trunkCapacity(provider.intNumber(5,30))
+        .milesTravelled(provider.positiveIntNumber())
+        .driver(provider.fixedDecoratedString("Jan Andrzej"))
+        .year(provider.intNumber(1999,2021));
   }
 
   public static CarEntity createCarWithYear(int year) {

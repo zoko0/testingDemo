@@ -5,15 +5,22 @@ import static pl.bc.tdfTestingDemo.CarEntityTestDataFactory.createCarWithYear;
 import static pl.bc.tdfTestingDemo.CarEntityTestDataFactory.createNewCar;
 import static pl.bc.tdfTestingDemo.DriverEntityTestDataFactory.standardDriverEntityBuilder;
 
+import com.tngtech.valueprovider.ValueProviderRule;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 public class CarManagerTest {
 
+  @Rule
+  public ValueProviderRule valueProviderRule = new ValueProviderRule();
+
   private DriverRepository driverRepository;
+
   private CarRepository carRepository;
+
   private CarManager carManager;
 
   @Before

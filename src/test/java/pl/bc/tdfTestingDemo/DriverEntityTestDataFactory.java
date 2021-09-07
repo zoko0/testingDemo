@@ -1,5 +1,7 @@
 package pl.bc.tdfTestingDemo;
 
+import static com.tngtech.valueprovider.ValueProviderFactory.createRandomValueProvider;
+
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import pl.bc.tdfTestingDemo.model.DriverEntity;
@@ -16,10 +18,11 @@ public class DriverEntityTestDataFactory {
 
   public static DriverEntityBuilder standardDriverEntityBuilder() {
 
+    var provider = createRandomValueProvider();
     return DriverEntity.builder()
-        .Id("driverId")
-        .firstName("Jan")
-        .lastName("Kowalski")
-        .licenseTimestamp(123456678L);
+        .Id(provider.fixedDecoratedString("driverId"))
+        .firstName(provider.fixedDecoratedString("Jan"))
+        .lastName(provider.fixedDecoratedString("Kowalski"))
+        .licenseTimestamp(provider.longNumber(1234L, 123456789L));
   }
 }
