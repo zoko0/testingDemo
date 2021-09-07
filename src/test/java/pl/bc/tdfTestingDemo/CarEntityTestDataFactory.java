@@ -1,5 +1,6 @@
 package pl.bc.tdfTestingDemo;
 
+import java.util.Calendar;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import pl.bc.tdfTestingDemo.model.CarEntity;
@@ -31,6 +32,16 @@ public class CarEntityTestDataFactory {
 
     return standardCarEntityBuilder()
         .year(year)
+        .build();
+  }
+
+  public static CarEntity createNewCar() {
+
+    var currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    return standardCarEntityBuilder()
+        .year(currentYear)
+        .isElectric(true)
+        .milesTravelled(0)
         .build();
   }
 }
